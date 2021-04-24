@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+crossorigin="anonymous">
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container">
+<div class="card">
+<div class="card-head bg-primary text-white text-center">
+<h1> ShipmentType Edit Page</h1>
+</div><!-- card head close-->
+<div class="card-body">
+<form th:action="@{/shipmentType/update}" method="post" th:object="${ship}">
+<div class="row">
+<div class="col-4">
+<label for="id">Id</label>
+</div>
+<div class="col-4">
+<input type="text" th:field="*{id}" readOnly>
+</div>
+</div>
+<div class="row" >
+ <div class="col-4">
+  <label for="shipmentMode">ShipmentMode</label>
+ </div><!-- col close-->
+ <div class="col-4">
+  <select class="form-control" th:field="*{shipmentMode}">
+    <option value=" ">-select-</option>
+     <option value="Air">Air</option>
+      <option value="Train">Train</option>
+      <option value="ship">ship</option>
+  </select>
+</div><!-- col close-->
+<div class="col-4">
+<span id="modeError">
+
+</span>
+</div>
+</div><!-- row  close-->
+<div class="row">
+ <div class="col-4">
+  <label for="shipmentCode">Shipment Code</label>
+ </div>
+  <div class="col-4">
+  <input type="text" th:field="*{shipmentCode}" class="form-control">
+ </div>
+  <div class="col-4">
+  <span id="codeError">
+  </span>
+ </div>
+</div><!--row end  -->
+<div class="row">
+<div class="col-4">
+<label for="enableShipment">Enable shipment</label>
+</div>
+<div class="col-4">
+<select th:field="*{enableShipment}" class="form-control"> 
+<option value=" ">-select-</option>
+<option value="yes">yes</option>
+<option value="No">No</option>
+</select>
+</div>
+<div class="col-4">
+<span id="enableError"></span>
+</div>
+</div><!-- row -->
+<div class="row">
+<div class="col-4">
+<label for="grade">Grade</label>
+</div>
+<div class="col-4">
+<input type="radio" th:field="*{grade}" value="A">A  
+<input type="radio" th:field="*{grade}" value="B">B
+<input type="radio" th:field="*{grade}" value="C">C
+</div>
+<div class="col-4">
+<span id="gradeError"></span>
+</div>
+</div>
+<div class="row">
+<div class="col-4">
+<label for="desc">Description</label>
+</div>
+<div class="col-4">
+<textarea th:field="*{desc}" class="form-control">
+</textarea>
+</div>
+<div class="col-4">
+<span id="descError"></span>
+</div>
+</div>
+<button class="btn btn-success">Submit</button>
+</form>
+</div><!-- card body -->
+<div th:if="${msg}!=null">
+<div class="card-footer bg:primary text-center text-white">
+<span th:text="${msg}"></span>
+</div>
+</div>
+</div><!--card  close -->
+</div><!--container close  -->
+</body>
+
+  <script th:src="@{/shipment.js}"></script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<div class="card">
+<div class="card-header bg-primary text-center text-white">
+<h1>ShipmentData</h1>
+</div><!-- card header end -->
+<div class="card-body">
+<table class="table table-hover">
+<tr class="bg-info text-center text-white">
+<th>ID</th>
+<th>Mode</th>
+<th>Code</th>
+<th>Enable</th>
+<th>Grade</th>
+
+<th>desc</th>
+<th colspan="2">Operations</th>
+</tr>
+<tr th:each=" ob:${list}" class="text-center text-black">
+<td th:text="${ob.id}">
+<td th:text="${ob.shipmentMode}">
+<td th:text="${ob.shipmentCode}">
+<td th:text="${ob.enableShipment}">
+<td th:text="${ob.grade}">
+<td th:text="${ob.desc}">
+<td><a th:href="@{/shipmentType/edit/{id}(id=${ob.id})}" class="btn btn-success">Edit</td>
+<td><a th:href="@{/shipmentType/delete/{id}(id=${ob.id})}" class="btn btn-danger">Delete</td>
+</tr>
+</table>
+</div>
+<div th:if="${msg}!=null">
+<div class="card-footer bg-primary text-center text-white">
+<span th:text="${msg}"></span>
+</div>
+</div>
+</div>
+</div><!--card end  -->
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+ integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+ crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+ crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+crossorigin="anonymous"></script>
+</html>
