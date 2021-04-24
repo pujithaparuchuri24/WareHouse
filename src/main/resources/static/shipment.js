@@ -11,24 +11,27 @@ $(document).ready(function(){
             var enableError = false;
             var gradeError = false;
             var descError = false;
-
-            function validate_shipmentMode() {
-                var val = $("#shipmentMode").val();
-                 alert(val);
-                if(val=='') {
-	 alert(val);
-                   $("#modeError").show(); 
-                   $("#modeError").html("Please choose <b> Shipment Mode</b>");
-                   $("#modeError").css('color','red'); 
-                   modeError = false;
-                } else {
-	 alert(val);
-                    $("#modeError").hide(); 
-                    modeError = true;
-                }
-                return modeError;
+                
+          function   validate_shipmentMode()
+          {
+          var v=$("#shipmentMode").val();
+          if(v=='')
+          {
+          alert("if");
+          $("#modeError").show();
+           $("#modeError").html("please <b>select one</b>");
+            $("#modeError").css('color','red');
+            modeError=false
             }
-
+            else
+            {
+            alert("else");
+             $("#modeError").hide();
+             modeError=true;
+            }
+            return modeError;
+          
+          }
             function validate_shipmentCode() {
                 var val = $("#shipmentCode").val();
                 var exp =/^[A-Z0-9\.\-]{4,12}$/;
@@ -49,28 +52,37 @@ $(document).ready(function(){
                 }
                 return codeError;
             }
-
-         function validate_enableShipment() {
-                var val = $("#enableShipment").val();
-                if(val=='') {
-                   $("#enableShipment").show(); 
-                   $("#enableShipment").html("Please choose <b> Shipment Mode</b>");
-                   $("#enableShipment").css('color','red'); 
-                   enableShipment = false;
-                } else {
-                    $("#enableShipment").hide(); 
-                    enableShipment = true;
-                }
-                return enableShipment;
+            function validate_enableShipment()
+            {
+            alert("enable");
+            var v=$("#enableShipment").val();
+            alert(v);
+            if(v=='')
+            {
+            alert("if");
+            $("#enableError").show();
+            $("#enableError").html("<b>select one</b>");
+            $("#enableError").css('color','red');
+            enableError=false;
             }
+            else
+            {
+             alert("else");
+            $("#enableError").hide();
+            enableError=true;
+           }
+           return enableError;
+            }
+        
             function validate_shipmentGrade() {
-                var len = $('[name="shipmentGrade"]:checked').length;
+                var len = $('[name="grade"]:checked').length;
                 if(len==0) {
                     $("#gradeError").show();
                     $("#gradeError").html("Please choose one Option");
                     $("#gradeError").css('color','red');
                     gradeError = false;
                 } else {
+                   alert(len);
                     $("#gradeError").hide();
                     gradeError = true;
                 }
@@ -78,21 +90,26 @@ $(document).ready(function(){
             }
 
             function validate_shipmentDescription(){
-                var val = $("#shipmentDescription").val();
+            alert("vlaidate");
+                var val = $("#desc").val();
                 var exp =/^[A-Za-z0-9\.\,\s\-]{5,150}$/;
                 if(val=='') {
                     $("#descError").show();
                     $("#descError").html("Description <b> can not be empty</b>");
                     $("#descError").css('color','red');
                     descError = false;
+                    alert("if");
                 } else if(!exp.test(val)) {
                     $("#descError").show();
                     $("#descError").html("Description <b> must bte 5-150 chars only</b>");
                     $("#descError").css('color','red');
                     descError = false;
+                    alert("elseif");
                 } else {
                     $("#descError").hide();
                     descError = true;
+                    alert("else");
+                    
                 }
                 return descError;
             }
@@ -100,17 +117,18 @@ $(document).ready(function(){
             $("#shipmentMode").change(function(){
                validate_shipmentMode();
             })
+           
             $("#shipmentCode").keyup(function(){
                 $(this).val($(this).val().toUpperCase());
                 validate_shipmentCode();
             })
-            $("enableShipment").change(function(){
+            $("#enableShipment").change(function(){
                validate_enableShipment();
             })
-            $("[name='shipmentGrade']").change(function(){
+            $("[name='grade']").change(function(){
                 validate_shipmentGrade();
             })
-            $("#shipmentDescription").keyup(function(){
+            $("#desc").keyup(function(){
                 validate_shipmentDescription();
             })
 

@@ -32,7 +32,7 @@
 			</div>
 			<!-- card head close-->
 			<div class="card-body">
-				<form th:action="@{/shipmentType/save}" method="post"
+				<form id="shipRegForm"  th:action="@{/shipmentType/save}" method="post"
 					th:object="${ship}">
 					<div class="row">
 						<div class="col-4">
@@ -40,8 +40,8 @@
 						</div>
 						<!-- col close-->
 						<div class="col-4">
-							<select class="form-control" id="shipmentMode" th:field="*{shipmentMode}">
-								<option value=" ">-select-</option>
+							<select class="form-control"  th:field="*{shipmentMode}">
+								<option value="">-select-</option>
 								<option value="Air">Air</option>
 								<option value="Train">Train</option>
 								<option value="ship">ship</option>
@@ -71,8 +71,8 @@
 							<label for="enableShipment">Enable shipment</label>
 						</div>
 						<div class="col-4">
-							<select th:field="*{enableShipment}" id="enableShipment" class="form-control">
-								<option value=" ">-select-</option>
+							<select th:field="*{enableShipment}"  class="form-control">
+								<option value="">-select-</option>
 								<option value="yes">yes</option>
 								<option value="No">No</option>
 							</select>
@@ -100,7 +100,7 @@
 							<label for="desc">Description</label>
 						</div>
 						<div class="col-4">
-							<textarea th:field="*{desc}" id="desc" class="form-control"></textarea>
+							<textarea th:field="*{desc}" class="form-control"></textarea>
 						</div>
 						<div class="col-4">
 							<span id="descError"></span>
