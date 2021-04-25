@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-primary text-center text-white">
+				<h1>OrederRegister</h1>
+			</div>
+			<!-- card header end -->
+			<div class="card-body">
+				<form th:action="@{/ordermethod/save}" th:object="${order}"
+					method="post" id="orderMethodForm">
+					<div class="row">
+						<div class="col-4">
+							<label for="orderMode">Order Mode</label>
+						</div>
+						<div class="col-4">
+							<input type="radio" th:field="*{orderMode}" value="Sale">sale
+							<input type="radio" th:field="*{orderMode}" value="purchase">purchase
+						</div>
+						<div class="col-4">
+							<span id="modeError"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<label for="orderCode">Order Code</label>
+						</div>
+						<div class="col-4">
+							<input type="text" th:field="*{orderCode}" 
+								class="form-control">
+						</div>
+						<div class="col-4">
+							<span id="codeError"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<label for="orderType">Order Type</label>
+						</div>
+						<div class="col-4">
+							<select th:field="*{orderType}" class="form-control">
+								<option value="">-SELECT-</option>
+								<option value="FIFO">FIFO</option>
+								<option value="LIFO">LIFO</option>
+								<option value="FCFO">FCFO</option>
+								<option value="FEFO">FEFO</option>
+							</select>
+
+						</div>
+						<div class="col-4">
+							<span id="typeError"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<label for="orderAcpt">Order Accept</label>
+						</div>
+						<div class="col-4">
+							<input type="checkbox" th:field="*{orderAcpt}"
+								value="Multi-Model" /> Multi-Model <input type="checkbox"
+								name="orderAcpt" value="Accept Return" /> Accept Return
+
+						</div>
+						<div class="col-4">
+							<span id="orderAcptError"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<label for="orderDesc">Description</label>
+						</div>
+						<div class="col-4">
+							<textarea th:field="*{orderDesc}" class="form-control"></textarea>
+						</div>
+						<div class="col-4">
+							<span id="descError"></span>
+						</div>
+					</div>
+					
+                    <button class="btn btn-success">Submit</button>
+
+
+				</form>
+			</div>
+			<div th:if="${msg}!=null">
+			<div class="card-footer bg-primary text-center text-white">
+			<span th:text="${msg}"></span>
+			</div>
+			</div>
+		</div>
+		<!--card end  -->
+	</div>
+	<!-- container end -->
+</body>
+<script th:src="@{/ordermethod.js}"></script>
+</html>

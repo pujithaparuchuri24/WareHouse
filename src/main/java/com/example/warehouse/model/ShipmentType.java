@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name="shpmnt_type")
 public class ShipmentType {
@@ -24,47 +26,7 @@ private String enableShipment;
 private String grade;
 @Column(name="sh_desc")
 private String desc;
-public Integer getId() {
-	return id;
-}
-public void setId(Integer id) {
-	this.id = id;
-}
-public String getShipmentMode() {
-	return shipmentMode;
-}
-public void setShipmentMode(String shipmentMode) {
-	this.shipmentMode = shipmentMode;
-}
-public String getShipmentCode() {
-	return shipmentCode;
-}
-public void setShipmentCode(String shipmentCode) {
-	this.shipmentCode = shipmentCode;
-}
-public String getEnableShipment() {
-	return enableShipment;
-}
-public void setEnableShipment(String enableShipment) {
-	this.enableShipment = enableShipment;
-}
-public String getGrade() {
-	return grade;
-}
-public void setGrade(String grade) {
-	this.grade = grade;
-}
-public String getDesc() {
-	return desc;
-}
-public void setDesc(String desc) {
-	this.desc = desc;
-}
-@Override
-public String toString() {
-	return "ShipmentType [id=" + id + ", shipmentMode=" + shipmentMode + ", shipmentCode=" + shipmentCode
-			+ ", enableShipment=" + enableShipment + ", grade=" + grade + ", desc=" + desc + "]";
-}
+
 
 
 

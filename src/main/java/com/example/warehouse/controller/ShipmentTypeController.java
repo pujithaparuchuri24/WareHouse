@@ -46,7 +46,7 @@ public class ShipmentTypeController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String Shipedit(@PathVariable int id,Model m)
+	public String Shipedit(@PathVariable int id,RedirectAttributes r,Model m)
 	{   String page=null;
 		Optional<ShipmentType> s=service.ShipmentTypeGetByID(id);
 		if(s.isPresent())
@@ -56,6 +56,7 @@ public class ShipmentTypeController {
 		}
 		else
 		{
+			r.addFlashAttribute("msg", id+"not there");
 			page="redirect:../getAll";
 		}
 				return page;
